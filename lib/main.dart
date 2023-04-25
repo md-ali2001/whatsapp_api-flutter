@@ -49,18 +49,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  WhatsApp whatsapp = WhatsApp();
-
-  @override
-  void initState() {
-    whatsapp.setup(
-      accessToken:
-          "EAACmPZCKuIPQBAIz8JaZBsAMEqZC2tJtYRgffuJCNA5iELNJwYOkUO5mn5AU8Fja6gHyvyKeP1bSfCKargoZCQdc3UFTl458WqHDJnVv7DLo40KfUYtLy9u02bKr8DWmRONOsxMaZCs1T9XTqevk4mIbpPIxISP5BjSSfP2efo0I3natTNMJyGc699Ubl8ofH10XCCKdNLSJWdsVm2IAB2Jg6ZCaqtMF4ZD",
-      fromNumberId: 112643671809026,
-    );
-    super.initState();
-  }
-
   @override
   Widget build(BuildContext context) {
     // This method is rerun every time setState is called, for instance as done
@@ -81,12 +69,13 @@ class _MyHomePageState extends State<MyHomePage> {
           TextButton(
             onPressed: () async {
               WhatsApp whatsapp = WhatsApp();
-
-              print(await whatsapp.messagesText(
-                to: 923062405387,
-                message: "Hello Flutter",
-                previewUrl: true,
-              ));
+              int phoneNumber = 15550175872;
+              whatsapp.setup(
+                  accessToken:
+                      "EAACmPZCKuIPQBALkB0apzd0jUegiZADYLyeazaDfBgeAWJSZBu03qQmGWK6JAywPYTs8ERV1bJup6RTCaf1xZBRKkmv9ZB7nS4gh5II7XYAMfjNqxLZAulxnOqSdohGmNRnK5hZALlrRaGY0RPiLDuZBXrZAiDeNuzQnyaZCcAIeP2GmxhlbpAPwdKQzrhZANJ6T8b28agQBx7EUoKheT3NJGqEl6RbO7ZCVQGcZD",
+                  fromNumberId: 112643671809026);
+              whatsapp.messagesTemplate(
+                  to: 923363823631, templateName: "hello_world");
             },
             child: const Text("Send Message"),
           )
